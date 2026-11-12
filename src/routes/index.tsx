@@ -99,6 +99,23 @@ const slides: ReactNode[] = [
       <li>◆ Արխիվային տվյալների արագ որոնում</li>
     </ul>
   </ImageSlide>,
+  <ImageSlide img={shirakatsi} kicker="VII–IX դդ." title="Պավլիկյաններ">
+    <p className="slide-body">Միջնադարյան աղանդավորական շարժում, որը ծագեց Հայաստանում և տարածվեց Բյուզանդիայում։ Նրանք մերժում էին եկեղեցական աստիճանակարգը և ծեսերը։</p>
+    <p className="slide-body">IX դարում պավլիկյանները ստեղծեցին իրենց ամրացված կենտրոնը՝ Տեփրիկեն, մինչև Բյուզանդիայի կողմից պարտվելը (872 թ.)։</p>
+  </ImageSlide>,
+  <ImageSlide img={manuscript} kicker="IX–XI դդ." title="Թոնդրակյաններ">
+    <p className="slide-body">Շարժումը հիմնադրեց Սմբատ Զարեհավանցին Թոնդրակ գավառում։ Թոնդրակյանները քննադատում էին եկեղեցու հարստությունն ու սոցիալական անարդարությունը։</p>
+    <p className="slide-body">Նրանց մասին գիտենք հիմնականում հակառակորդների՝ Գրիգոր Մագիստրոսի և Գրիգոր Նարեկացու գրվածքներից։</p>
+  </ImageSlide>,
+  <div className="flex h-full flex-col justify-center gap-14 px-[120px]">
+    <div className="slide-kicker">Աղանդավորներ և AI</div>
+    <h2 className="slide-title">Ինչպես կարող է AI-ը օգնել ուսումնասիրել աղանդները</h2>
+    <div className="grid grid-cols-3 gap-10">
+      {[["Տեքստային վերլուծություն","Հակաաղանդավորական թղթերում պահպանված ուսմունքի բեկորների հավաքում և համեմատություն։"],["Աղբյուրների կողմնակալություն","AI-ը կարող է նկատել, թե որտեղ է հեղինակը թշնամաբար տրամադրված, որպեսզի պատմաբանը ավելի օբյեկտիվ լինի։"],["Քարտեզագրում","Պավլիկյանների և թոնդրակյանների տարածման ուղիների թվային քարտեզներ։"]].map(([t,d])=>(
+        <div key={t} className="slide-card"><h3 className="slide-kicker mb-5">{t}</h3><p className="slide-body">{d}</p></div>
+      ))}
+    </div>
+  </div>,
   <div className="flex h-full flex-col justify-center gap-16 px-[120px]">
     <div className="slide-kicker">Ժամանակագրություն</div>
     <h2 className="slide-title">Գիտելիքի 1600-ամյա ճանապարհը</h2>
