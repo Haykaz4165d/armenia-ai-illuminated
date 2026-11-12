@@ -214,7 +214,7 @@ const slides: ReactNode[] = [
       ))}
     </div>
   </div>,
-  <div className="flex h-full flex-col justify-center gap-12 px-[120px]">
+  <div className="flex h-full flex-col justify-center gap-8 px-[120px]">
     <div className="slide-kicker">Պատմական աղբյուրներ և գրականություն</div>
     <h2 className="slide-title">Ուսումնասիրության հիմքը</h2>
     <div className="grid grid-cols-2 gap-10">
@@ -238,6 +238,11 @@ const slides: ReactNode[] = [
           <li>◆ Մատենադարանի թվայնացված ձեռագրերի ֆոնդ</li>
         </ul>
       </div>
+    </div>
+    <div className="border-t border-[color:var(--deck-accent)] pt-5">
+      <p className="slide-caption"><span className="text-deck-accent">Լրացուցիչ թվային աղբյուր․ </span><a href="https://brainograph.ai" target="_blank" rel="noopener noreferrer" className="text-deck-ink underline underline-offset-4">brainograph.ai ↗</a> · Դիտված՝ 12.11.2026</p>
+      <p className="slide-note mt-3">Գլխավոր էջի մեջբերում․ «Ճանաչել զիմաստութիւն եւ զխրատ, իմանալ զբանս հանճարոյ»։</p>
+      <p className="slide-note mt-2">Հանրային էջը պատմական նյութեր չի ներկայացնում․ այս հղումը չի հիմնավորում Պավլիկյանների և Թոնդրակյանների մասին պնդումները։</p>
     </div>
   </div>,
   <div className="flex h-full flex-col justify-center gap-16 px-[120px]">
