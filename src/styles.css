@@ -185,9 +185,6 @@
 .text-deck-ink { color: var(--deck-ink); }
 .deck-btn { background: oklch(1 0 0 / 0.1); color: var(--deck-ink); }
 
-@theme inline {
-  --font-serif-hy: var(--font-serif-hy);
-}
 .manuscript-workspace {
   --background: oklch(0.16 0.02 30);
   --foreground: oklch(0.96 0.02 80);
