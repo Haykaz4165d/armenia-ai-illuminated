@@ -102,11 +102,29 @@ const slides: ReactNode[] = [
   <ImageSlide img={shirakatsi} kicker="VII–IX դդ." title="Պավլիկյաններ">
     <p className="slide-body">Միջնադարյան աղանդավորական շարժում, որը ծագեց Հայաստանում և տարածվեց Բյուզանդիայում։ Նրանք մերժում էին եկեղեցական աստիճանակարգը և ծեսերը։</p>
     <p className="slide-body">IX դարում պավլիկյանները ստեղծեցին իրենց ամրացված կենտրոնը՝ Տեփրիկեն, մինչև Բյուզանդիայի կողմից պարտվելը (872 թ.)։</p>
+    <p className="slide-caption opacity-80">Աղբյուրներ․ Պետրոս Սիցիլիացի (IX դ.) · Նինա Գարսոյան, «The Paulician Heresy» (1967) · Հրանտ Բարթիկյան</p>
   </ImageSlide>,
   <ImageSlide img={manuscript} kicker="IX–XI դդ." title="Թոնդրակյաններ">
     <p className="slide-body">Շարժումը հիմնադրեց Սմբատ Զարեհավանցին Թոնդրակ գավառում։ Թոնդրակյանները քննադատում էին եկեղեցու հարստությունն ու սոցիալական անարդարությունը։</p>
     <p className="slide-body">Նրանց մասին գիտենք հիմնականում հակառակորդների՝ Գրիգոր Մագիստրոսի և Գրիգոր Նարեկացու գրվածքներից։</p>
+    <p className="slide-caption opacity-80">Աղբյուրներ․ Գրիգոր Մագիստրոս, «Թուղթ առ թոնդրակեցիս» · Գրիգոր Նարեկացի, «Թուղթ ընդդեմ ծխնեցոյ» · Արամ Տեր-Ղևոնդյան, «Թոնդրակյան շարժումը» (1955)</p>
   </ImageSlide>,
+  <div className="flex h-full flex-col justify-center gap-14 px-[120px]">
+    <div className="slide-kicker">AI մեթոդներ</div>
+    <h2 className="slide-title">Տեխնոլոգիաները, որոնք բացում են անցյալը</h2>
+    <div className="grid grid-cols-3 gap-10">
+      {[
+        ["Ձեռագիր ճանաչում (HTR)", "Նեյրոնային ցանցերը սովորում են կարդալ գրաբար ձեռագրերը՝ թվայնացնելով այն, ինչ մարդը կկարդար տարիներով։"],
+        ["Լեզվական մոդելներ", "Գրաբար և միջին հայերեն տեքստերի վրա ուսուցված մոդելները կարող են թարգմանել, ամփոփել և համեմատել աղբյուրները։"],
+        ["Գիտելիքի գրաֆներ", "AI-ը կապում է անձին, վայրերը և իրադարձությունները մեկ ցանցի մեջ՝ բացահայտելով պատմության թաքնված կապերը։"],
+      ].map(([t, d]) => (
+        <div key={t} className="slide-card">
+          <h3 className="slide-kicker mb-5">{t}</h3>
+          <p className="slide-body">{d}</p>
+        </div>
+      ))}
+    </div>
+  </div>,
   <div className="flex h-full flex-col justify-center gap-14 px-[120px]">
     <div className="slide-kicker">Աղանդավորներ և AI</div>
     <h2 className="slide-title">Ինչպես կարող է AI-ը օգնել ուսումնասիրել աղանդները</h2>
@@ -114,6 +132,32 @@ const slides: ReactNode[] = [
       {[["Տեքստային վերլուծություն","Հակաաղանդավորական թղթերում պահպանված ուսմունքի բեկորների հավաքում և համեմատություն։"],["Աղբյուրների կողմնակալություն","AI-ը կարող է նկատել, թե որտեղ է հեղինակը թշնամաբար տրամադրված, որպեսզի պատմաբանը ավելի օբյեկտիվ լինի։"],["Քարտեզագրում","Պավլիկյանների և թոնդրակյանների տարածման ուղիների թվային քարտեզներ։"]].map(([t,d])=>(
         <div key={t} className="slide-card"><h3 className="slide-kicker mb-5">{t}</h3><p className="slide-body">{d}</p></div>
       ))}
+    </div>
+  </div>,
+  <div className="flex h-full flex-col justify-center gap-12 px-[120px]">
+    <div className="slide-kicker">Պատմական աղբյուրներ և գրականություն</div>
+    <h2 className="slide-title">Ուսումնասիրության հիմքը</h2>
+    <div className="grid grid-cols-2 gap-10">
+      <div className="slide-card">
+        <h3 className="slide-kicker mb-5">Առաջնային աղբյուրներ</h3>
+        <ul className="slide-body flex list-none flex-col gap-4">
+          <li>◆ Պետրոս Սիցիլիացի — «Պատմություն պավլիկյանների մասին» (IX դ.)</li>
+          <li>◆ Գրիգոր Մագիստրոս — «Թուղթ առ թոնդրակեցիս» (XI դ.)</li>
+          <li>◆ Գրիգոր Նարեկացի — «Թուղթ ընդդեմ ծխնեցոյ» (X դ.)</li>
+          <li>◆ Արիստակես Լաստիվերցի — «Պատմություն» (XI դ.)</li>
+          <li>◆ «Ճշմարտության բանալին» — թոնդրակյան ուսմունքի ձեռագիր</li>
+        </ul>
+      </div>
+      <div className="slide-card">
+        <h3 className="slide-kicker mb-5">Ժամանակակից ուսումնասիրություններ</h3>
+        <ul className="slide-body flex list-none flex-col gap-4">
+          <li>◆ Նինա Գարսոյան — «The Paulician Heresy» (1967)</li>
+          <li>◆ Արամ Տեր-Ղևոնդյան — «Թոնդրակյան շարժումը» (1955)</li>
+          <li>◆ Հրանտ Բարթիկյան — պավլիկյանների և թոնդրակյանների աշխատություններ</li>
+          <li>◆ «Հայոց պատմություն» բազմահատորյակ, ՀՀ ԳԱԱ</li>
+          <li>◆ Մատենադարանի թվայնացված ձեռագրերի ֆոնդ</li>
+        </ul>
+      </div>
     </div>
   </div>,
   <div className="flex h-full flex-col justify-center gap-16 px-[120px]">
