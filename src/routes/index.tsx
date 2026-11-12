@@ -4,6 +4,8 @@ import hero from "@/assets/hero.jpg";
 import manuscript from "@/assets/manuscript.jpg";
 import computer from "@/assets/computer.jpg";
 import shirakatsi from "@/assets/shirakatsi.jpg";
+import byurakan from "@/assets/byurakan.jpg";
+import chess from "@/assets/chess.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -65,6 +67,14 @@ const slides: ReactNode[] = [
     <p className="slide-body">Ակադեմիկոս Սերգեյ Մերգելյանի գլխավորությամբ հիմնադրվեց Երևանի մաթեմատիկական մեքենաների գիտահետազոտական ինստիտուտը։</p>
     <p className="slide-body">Այստեղ ստեղծվեցին «Հրազդան» և «Նաիրի» համակարգիչները, որոնք օգտագործվում էին ողջ ԽՍՀՄ-ում։</p>
   </ImageSlide>,
+  <ImageSlide img={byurakan} kicker="1946 թ." title="Բյուրականը և տվյալների գիտությունը">
+    <p className="slide-body">Վիկտոր Համբարձումյանը հիմնադրեց Բյուրականի աստղադիտարանը։ Մարգարյանի ցուցակը համակարգեց հազարավոր գալակտիկաների դիտարկումներ։</p>
+    <p className="slide-body">Այսօր նման հսկայական աստղագիտական տվյալները վերլուծվում են մեքենայական ուսուցմամբ։</p>
+  </ImageSlide>,
+  <ImageSlide img={chess} kicker="Տրամաբանություն" title="Շախմատը՝ AI-ի փորձադաշտ">
+    <p className="slide-body">Տիգրան Պետրոսյանը 1963 թ. դարձավ աշխարհի չեմպիոն, իսկ 2011 թ.-ից շախմատը պարտադիր առարկա է հայկական դպրոցներում։</p>
+    <p className="slide-body">Շախմատը տասնամյակներ շարունակ եղել է AI-ի հիմնական փորձադաշտը՝ Deep Blue-ից մինչև AlphaZero։</p>
+  </ImageSlide>,
   <div className="flex h-full flex-col justify-center gap-14 px-[120px]">
     <div className="slide-kicker">Այսօր</div>
     <h2 className="slide-title">Ժամանակակից Հայաստանը և AI-ը</h2>
@@ -89,11 +99,37 @@ const slides: ReactNode[] = [
       <li>◆ Արխիվային տվյալների արագ որոնում</li>
     </ul>
   </ImageSlide>,
+  <div className="flex h-full flex-col justify-center gap-16 px-[120px]">
+    <div className="slide-kicker">Ժամանակագրություն</div>
+    <h2 className="slide-title">Գիտելիքի 1600-ամյա ճանապարհը</h2>
+    <div className="grid grid-cols-5 gap-8 border-t-4 border-[color:var(--deck-accent)] pt-10">
+      {[["405","Հայոց այբուբեն"],["VII դ.","Շիրակացու թվաբանություն"],["1956","Մաթեմատիկական մեքենաների ինստիտուտ"],["2011","«Թումո» կենտրոն"],["Այսօր","Հայերեն AI լուծումներ"]].map(([y,t])=>(
+        <div key={y}><div className="slide-stat mb-4 text-[72px]">{y}</div><p className="slide-body">{t}</p></div>
+      ))}
+    </div>
+  </div>,
+  <div className="flex h-full flex-col justify-center gap-14 px-[120px]">
+    <div className="slide-kicker">Մարտահրավերներ</div>
+    <h2 className="slide-title">Ինչ է պետք անել</h2>
+    <div className="grid grid-cols-2 gap-10">
+      {[["Տվյալներ","Հայերեն թվային տեքստերը քիչ են․ անհրաժեշտ է թվայնացնել արխիվները։"],["Էթիկա","Պատմական փաստերը պետք է ստուգվեն մասնագետների կողմից, ոչ միայն AI-ով։"],["Կրթություն","Նոր սերնդի AI մասնագետների պատրաստում դպրոցից սկսած։"],["Համագործակցություն","Պատմաբանների, լեզվաբանների և ծրագրավորողների համատեղ աշխատանք։"]].map(([t,d])=>(
+        <div key={t} className="slide-card"><h3 className="slide-kicker mb-4">{t}</h3><p className="slide-body">{d}</p></div>
+      ))}
+    </div>
+  </div>,
   <div className="flex h-full flex-col items-start justify-center gap-10 px-[120px]">
     <div className="slide-kicker">Եզրակացություն</div>
     <h2 className="slide-title-lg max-w-[1500px]">Անցյալը՝ որպես տվյալ, ապագան՝ որպես հնարավորություն</h2>
     <p className="slide-body max-w-[1100px]">Մաշտոցից մինչև Մերգելյան, Մատենադարանից մինչև նեյրոնային ցանցեր․ հայ միտքը միշտ եղել է գիտելիքի պահապան և նորարար։</p>
   </div>,
+  <>
+    <img src={hero} alt="" className="absolute inset-0 h-full w-full object-cover" />
+    <div className="absolute inset-0 slide-overlay" />
+    <div className="relative flex h-full flex-col items-center justify-center gap-8 text-center">
+      <h2 className="slide-title-lg">Շնորհակալություն</h2>
+      <p className="slide-body">Հարցեր և քննարկում</p>
+    </div>
+  </>,
 ];
 
 function Deck() {
