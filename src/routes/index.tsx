@@ -125,6 +125,45 @@ const slides: ReactNode[] = [
       ))}
     </div>
   </div>,
+  <div className="flex h-full flex-col justify-center gap-8 px-[120px] py-12">
+    <div>
+      <div className="slide-kicker">Գործնական օրինակ</div>
+      <h2 className="slide-title mt-5">Ձեռագրից դեպի վերծանված տեքստ</h2>
+    </div>
+    <div className="grid grid-cols-4 gap-6">
+      {[
+        ["01", "Նախապատրաստում", "Ձեռագիրը սկանավորվում է, էջերը մաքրվում և դասավորվում են։"],
+        ["02", "Ձեռագիր ճանաչում", "Ցանցը տառերի պատկերը տող առ տող վերածում է գրաբար տեքստի։"],
+        ["03", "Լեզվական մոդել", "Մոդելը բացում է մակրդելները, թարգմանում և ամփոփում տեքստը։"],
+        ["04", "Մասնագետի ստուգում", "Պատմաբանը համեմատում է արդյունքը բնագրի հետ և ուղղում այն։"],
+      ].map(([n, t, d]) => (
+        <div key={n} className="slide-card">
+          <div className="slide-kicker mb-4">{n}</div>
+          <h3 className="slide-step mb-4">{t}</h3>
+          <p className="slide-caption">{d}</p>
+        </div>
+      ))}
+    </div>
+    <div className="grid grid-cols-2 gap-10">
+      <div className="slide-card">
+        <h3 className="slide-kicker mb-5">Ինչ է ստացվում</h3>
+        <ul className="slide-body flex list-none flex-col gap-4">
+          <li>◆ Որոնելի տեքստ հազարավոր էջերից</li>
+          <li>◆ Անհայտ բառերի և անունների բացահայտում</li>
+          <li>◆ Կրկնվող հատվածների հայտնաբերում</li>
+        </ul>
+      </div>
+      <div className="slide-card" style={{ borderLeftColor: "var(--deck-red)" }}>
+        <h3 className="slide-kicker mb-5">Սահմանափակումներ</h3>
+        <ul className="slide-body flex list-none flex-col gap-4">
+          <li>◆ Պիտակավորված գրաբար տվյալ շատ քիչ է</li>
+          <li>◆ Վնասված տառերն ու մակրդելները սխալ են</li>
+          <li>◆ Մոդելը կարող է կեղծ փաստ առաջացնել</li>
+        </ul>
+      </div>
+    </div>
+    <p className="slide-caption opacity-80">Ամեն արդյունք վերջում ստուգում է մասնագետը․ AI-ը միայն առաջարկում է ընթերցանության տարբերակներ։</p>
+  </div>,
   <div className="flex h-full flex-col justify-center gap-14 px-[120px]">
     <div className="slide-kicker">Աղանդավորներ և AI</div>
     <h2 className="slide-title">Ինչպես կարող է AI-ը օգնել ուսումնասիրել աղանդները</h2>
