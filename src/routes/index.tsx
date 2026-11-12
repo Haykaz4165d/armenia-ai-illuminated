@@ -6,6 +6,7 @@ import computer from "@/assets/computer.jpg";
 import shirakatsi from "@/assets/shirakatsi.jpg";
 import byurakan from "@/assets/byurakan.jpg";
 import chess from "@/assets/chess.jpg";
+import manuscriptPage from "@/assets/manuscript-page.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -125,24 +126,59 @@ const slides: ReactNode[] = [
       ))}
     </div>
   </div>,
-  <div className="flex h-full flex-col justify-center gap-8 px-[120px] py-12">
+  <div className="flex h-full flex-col justify-center gap-7 px-[120px] py-10">
     <div>
       <div className="slide-kicker">Գործնական օրինակ</div>
-      <h2 className="slide-title mt-5">Ձեռագրից դեպի վերծանված տեքստ</h2>
+      <h2 className="slide-title mt-4">Ձեռագրից դեպի վերծանված տեքստ</h2>
+    </div>
+    <div className="grid grid-cols-[700px_1fr] gap-9">
+      <figure className="slide-figure">
+        <img src={manuscriptPage} alt="Գրաբար ձեռագրի էջ՝ խորանարդագրով, կարմիր վերնագրով և մակագրությամբ" loading="lazy" width={1200} height={912} className="h-[460px] w-full object-cover object-top" />
+        <figcaption className="px-7 py-5">
+          <div className="slide-kicker mb-2">Քայլ 01 · Նախապատրաստում</div>
+          <p className="slide-note">Էջը սկանավորվում և մաքրվում է ճանաչման համար (ցուցադրական պատկեր)։</p>
+        </figcaption>
+      </figure>
+      <div className="flex flex-col gap-4">
+        <div className="slide-card-sm">
+          <div className="slide-kicker mb-3">Քայլ 02 · Ձեռագիր ճանաչում</div>
+          <p className="slide-grabar">«Ի տօն մեծի Վարդաւառի, ի ձեռս <span className="slide-lowconf">գրչին</span> Յակոբայ, գրիս զսա ի յիշատակ»</p>
+          <p className="slide-caption mt-3">Կարմիրը՝ ցածր վստահությամբ հատվածն է։ Տողը ցուցադրական է։</p>
+        </div>
+        <div className="slide-card-sm">
+          <div className="slide-kicker mb-3">Քայլ 03 · Լեզվական մոդել</div>
+          <p className="slide-body text-[25px]">«Մեծ Վարդավառի տոնին, գրիչ Հակոբի ձեռքով, սա գրվեց հիշատակի»։</p>
+          <div className="mt-4 flex flex-wrap gap-3">
+            <span className="slide-chip">անուն՝ Հակոբ (գրիչ)</span>
+            <span className="slide-chip">տոն՝ Վարդավառ</span>
+            <span className="slide-chip">տեսակ՝ հիշատակարան</span>
+          </div>
+        </div>
+        <div className="slide-card-sm" style={{ borderLeftColor: "var(--deck-red)" }}>
+          <div className="slide-kicker mb-3">Քայլ 04 · Մասնագետի ստուգում</div>
+          <p className="slide-body text-[25px]">«Վարդաւառի» → «Վարդավառի»․ մակրդելն ու ամսաթիվը ճշտում է պատմաբանը։</p>
+        </div>
+      </div>
     </div>
     <div className="grid grid-cols-4 gap-6">
       {[
-        ["01", "Նախապատրաստում", "Ձեռագիրը սկանավորվում է, էջերը մաքրվում և դասավորվում են։"],
-        ["02", "Ձեռագիր ճանաչում", "Ցանցը տառերի պատկերը տող առ տող վերածում է գրաբար տեքստի։"],
-        ["03", "Լեզվական մոդել", "Մոդելը բացում է մակրդելները, թարգմանում և ամփոփում տեքստը։"],
-        ["04", "Մասնագետի ստուգում", "Պատմաբանը համեմատում է արդյունքը բնագրի հետ և ուղղում այն։"],
+        ["01", "Նախապատրաստում", "Սկանավորում, մաքրում, դասավորում"],
+        ["02", "Ձեռագիր ճանաչում", "Պատկերը՝ գրաբար տեքստի"],
+        ["03", "Լեզվական մոդել", "Թարգմանություն, ամփոփում, բացահայտում"],
+        ["04", "Մասնագետի ստուգում", "Համեմատում բնագրի հետ, ուղղում"],
       ].map(([n, t, d]) => (
-        <div key={n} className="slide-card">
-          <div className="slide-kicker mb-4">{n}</div>
-          <h3 className="slide-step mb-4">{t}</h3>
-          <p className="slide-caption">{d}</p>
+        <div key={n} className="slide-card-sm">
+          <div className="slide-kicker mb-2">{n}</div>
+          <h3 className="slide-step mb-2">{t}</h3>
+          <p className="slide-note">{d}</p>
         </div>
       ))}
+    </div>
+  </div>,
+  <div className="flex h-full flex-col justify-center gap-12 px-[120px] py-12">
+    <div>
+      <div className="slide-kicker">Գործնական օրինակ</div>
+      <h2 className="slide-title mt-5">Ինչ է ստացվում և ինչն է դժվար</h2>
     </div>
     <div className="grid grid-cols-2 gap-10">
       <div className="slide-card">

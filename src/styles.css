@@ -175,6 +175,12 @@
 .slide-stat { font-family:var(--font-serif-hy); font-size:96px; color:var(--deck-accent); line-height:1; font-weight:700; }
 .slide-overlay { background: var(--deck-overlay); }
 .slide-card { border-left:6px solid var(--deck-accent); background: oklch(1 0 0 / 0.05); padding:32px 36px; }
+.slide-card-sm { border-left:6px solid var(--deck-accent); background: oklch(1 0 0 / 0.05); padding:18px 26px; }
+.slide-note { font-size:21px; line-height:1.3; color:var(--deck-muted); }
+.slide-figure { border:1px solid oklch(1 0 0 / 0.18); background: oklch(1 0 0 / 0.04); overflow:hidden; }
+.slide-grabar { font-family:var(--font-serif-hy); font-size:27px; line-height:1.4; color:var(--deck-ink); }
+.slide-lowconf { color:var(--deck-red); border-bottom:2px dotted var(--deck-red); }
+.slide-chip { display:inline-block; font-size:20px; line-height:1.2; padding:6px 16px; border:1px solid oklch(1 0 0 / 0.28); border-radius:999px; color:var(--deck-ink); }
 .text-deck-accent { color: var(--deck-accent); }
 .text-deck-ink { color: var(--deck-ink); }
 .deck-btn { background: oklch(1 0 0 / 0.1); color: var(--deck-ink); }
