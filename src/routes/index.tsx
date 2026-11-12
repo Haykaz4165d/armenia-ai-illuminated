@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from '@/components/ui/button';
-import { ScanText } from 'lucide-react';
+import { ScanText, Upload } from 'lucide-react';
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import hero from "@/assets/hero.jpg";
 import manuscript from "@/assets/manuscript.jpg";
@@ -50,6 +50,9 @@ const slides: ReactNode[] = [
       <div className="slide-kicker">Պատմություն · Գիտություն · Ապագա</div>
       <h1 className="slide-title-lg">Հայոց պատմությունը և արհեստական բանականությունը</h1>
       <p className="slide-body">Մաշտոցի տառերից մինչև նեյրոնային ցանցեր․ ինչպես է հայ միտքը դարեր շարունակ կառուցել տեղեկատվության և տրամաբանության համակարգեր։</p>
+      <Button asChild variant="secondary" className="deck-btn h-auto self-start whitespace-normal px-10 py-6 text-[32px] [&_svg]:size-9">
+        <Link to="/manuscript"><Upload />Վերբեռնել ձեռագրի պատկեր</Link>
+      </Button>
     </div>
   </>,
   <ImageSlide img={manuscript} kicker="405 թ." title="Այբուբենը՝ առաջին «կոդը»">
