@@ -153,3 +153,26 @@
     color: var(--color-foreground);
   }
 }
+
+:root {
+  --deck-bg: oklch(0.16 0.02 30);
+  --deck-ink: oklch(0.96 0.02 80);
+  --deck-muted: oklch(0.75 0.03 70);
+  --deck-accent: oklch(0.75 0.15 60);
+  --deck-red: oklch(0.5 0.17 25);
+  --deck-overlay: linear-gradient(90deg, oklch(0.12 0.02 30 / 0.95) 0%, oklch(0.12 0.02 30 / 0.7) 45%, oklch(0.12 0.02 30 / 0.1) 100%);
+  --font-serif-hy: "Noto Serif Armenian", serif;
+  --font-sans-hy: "Noto Sans Armenian", sans-serif;
+}
+.deck-root { background: oklch(0.08 0.01 30); color: var(--deck-ink); font-family: var(--font-sans-hy); }
+.slide-content { width:1920px; height:1080px; position:absolute; left:50%; top:50%; margin-left:-960px; margin-top:-540px; transform-origin:center; overflow:hidden; background:var(--deck-bg); }
+.slide-title-lg { font-family:var(--font-serif-hy); font-size:104px; line-height:1.05; font-weight:700; }
+.slide-title { font-family:var(--font-serif-hy); font-size:76px; line-height:1.1; font-weight:700; }
+.slide-body { font-size:32px; line-height:1.4; color:var(--deck-muted); }
+.slide-kicker { font-size:24px; letter-spacing:0.14em; text-transform:uppercase; color:var(--deck-accent); font-weight:600; }
+.slide-stat { font-family:var(--font-serif-hy); font-size:96px; color:var(--deck-accent); line-height:1; font-weight:700; }
+.slide-overlay { background: var(--deck-overlay); }
+.slide-card { border-left:6px solid var(--deck-accent); background: oklch(1 0 0 / 0.05); padding:32px 36px; }
+.text-deck-accent { color: var(--deck-accent); }
+.text-deck-ink { color: var(--deck-ink); }
+.deck-btn { background: oklch(1 0 0 / 0.1); color: var(--deck-ink); }
