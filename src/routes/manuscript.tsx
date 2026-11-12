@@ -7,6 +7,9 @@ import { transcribeManuscript } from '@/lib/manuscript.functions';
 import { validateImageFile, type Transcription } from '@/lib/manuscript';
 
 export const Route = createFileRoute('/manuscript')({
+  // Keep this small upload workspace in the entry graph so opening it does not
+  // depend on a second, potentially stale route-module URL after an update.
+  codeSplitGroupings: [],
   head: () => ({ meta: [
     { title: 'Հայկական ձեռագրի նախնական վերծանում · Պատմություն և AI' },
     { name: 'description', content: 'Հայկական ձեռագրի պատկերի AI վերծանում՝ անորոշ ընթերցումների, հնարավոր սխալների և սահմանափակումների նշումով։' },
