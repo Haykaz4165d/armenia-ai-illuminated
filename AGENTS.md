@@ -28,3 +28,7 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+- Keep manuscript inference in a server function using the AI Gateway SDK; the browser only supplies validated image data so credentials never reach learners.
+- Keep uploaded manuscript images and results in page memory, not persistent storage, because this flow is a one-shot reading tool with no requested archive.
+- Validate structured transcription segments and distinguish tentative, uncertain and unreadable readings so contextual guesses cannot silently become source text.

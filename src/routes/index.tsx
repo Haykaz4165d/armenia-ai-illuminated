@@ -1,4 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Button } from '@/components/ui/button';
+import { ScanText } from 'lucide-react';
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import hero from "@/assets/hero.jpg";
 import manuscript from "@/assets/manuscript.jpg";
@@ -276,7 +278,8 @@ function Deck() {
   const go = (d: number) => setI((v) => Math.max(0, Math.min(slides.length - 1, v + d)));
 
   useEffect(() => {
-    const el = box.current!;
+    const el = box.current;
+    if (!el) return;
     const ro = new ResizeObserver(() => setScale(Math.min(el.clientWidth / 1920, el.clientHeight / 1080)));
     ro.observe(el);
     const key = (e: KeyboardEvent) => {
@@ -289,6 +292,9 @@ function Deck() {
 
   return (
     <div className="deck-root flex h-[100dvh] flex-col">
+      <div className="flex justify-end px-3 pt-3">
+        <Button asChild variant="secondary" className="deck-btn"><Link to="/manuscript"><ScanText />Վերծանել ձեռագիր</Link></Button>
+      </div>
       <div
         ref={box}
         className="relative flex-1 overflow-hidden"
