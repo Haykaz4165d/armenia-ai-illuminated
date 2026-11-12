@@ -120,8 +120,8 @@ function Deck() {
       <div
         ref={box}
         className="relative flex-1 overflow-hidden"
-        onTouchStart={(e) => (touch.current = e.touches[0].clientX)}
-        onTouchEnd={(e) => { const dx = e.changedTouches[0].clientX - touch.current; if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1); }}
+        onTouchStart={(e) => (touch.current = (e.touches[0]?.clientX ?? 0))}
+        onTouchEnd={(e) => { const dx = (e.changedTouches[0]?.clientX ?? 0) - touch.current; if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1); }}
       >
         <div className="slide-content" style={{ transform: `scale(${scale})` }}>{slides[i]}</div>
       </div>
