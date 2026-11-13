@@ -26,6 +26,14 @@ export const imageInputSchema = z.object({
   } catch { ctx.addIssue({ code: 'custom', message: 'Անվավեր պատկեր։' }); }
 });
 
+export const inferenceInputSchema = z.object({
+  image: z.string(),
+  model: z.enum(['openai/gpt-6-astra', 'openai/gpt-6-sol']).default('openai/gpt-6-astra'),
+}).superRefine(({ image }, ctx) => {
+  const parsed = imageInputSchema.safeParse({ image });
+  if (!parsed.success) for (const issue of parsed.error.issues) ctx.addIssue(issue);
+});
+
 export const transcriptionSchema = z.object({
   readable: z.boolean(),
   summary: z.string().max(1600),

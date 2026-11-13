@@ -5,6 +5,8 @@ import { ArrowLeft, Upload, ScanText, LoaderCircle, Trash2, AlertTriangle } from
 import { Button } from '@/components/ui/button';
 import { transcribeManuscript } from '@/lib/manuscript.functions';
 import { validateImageFile, type Transcription } from '@/lib/manuscript';
+import { ManuscriptComparison, type ModelReading } from '@/components/manuscript-comparison';
+import type { ManuscriptModel } from '@/lib/manuscript-comparison';
 
 export const Route = createFileRoute('/manuscript')({
   // Keep this small upload workspace in the entry graph so opening it does not
@@ -28,11 +30,15 @@ function ManuscriptPage() {
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [reading, setReading] = useState(false);
+  const [readings, setReadings] = useState<Partial<Record<ManuscriptModel, ModelReading>>>({});
+  const [busyModel, setBusyModel] = useState<ManuscriptModel | null>(null);
+  const requestActive = useRef(false);
   const transcribe = useServerFn(transcribeManuscript);
 
   async function selectFile(file?: File) {
     if (!file || busy || reading) return;
     setResult(null);
+    setReadings({});
     setImage(null);
     setName('');
     const invalid = validateImageFile(file);
@@ -58,17 +64,23 @@ function ManuscriptPage() {
     finally { setReading(false); }
   }
 
-  async function analyze() {
-    if (!image || busy || reading) return;
+  async function analyze(model: ManuscriptModel = 'openai/gpt-6-astra') {
+    if (!image || requestActive.current || reading) return;
+    requestActive.current = true;
     setBusy(true);
-    setError(null);
-    setResult(null);
+    setBusyModel(model);
+    if (model === 'openai/gpt-6-astra') { setError(null); setResult(null); }
+    setReadings(previous => ({ ...previous, [model]: undefined }));
     try {
-      const outcome = await transcribe({ data: { image } });
-      setResult(outcome.result);
-      setError(outcome.error);
-    } catch { setError('Վերծանումը չհաջողվեց․ ստուգեք կապը կամ ընտրեք այլ պատկեր։ Ավտոմատ կրկնություն չի կատարվել։'); }
-    finally { setBusy(false); }
+      const outcome = await transcribe({ data: { image, model } });
+      setReadings(previous => ({ ...previous, [model]: outcome }));
+      if (model === 'openai/gpt-6-astra') { setResult(outcome.result); setError(outcome.error); }
+    } catch {
+      const message = 'Վերծանումը չհաջողվեց․ ստուգեք կապը կամ ընտրեք այլ պատկեր։ Ավտոմատ կրկնություն չի կատարվել։';
+      setReadings(previous => ({ ...previous, [model]: { result: null, error: message } }));
+      if (model === 'openai/gpt-6-astra') setError(message);
+    }
+    finally { setBusy(false); setBusyModel(null); requestActive.current = false; }
   }
 
   return <main className="manuscript-workspace min-h-dvh">
@@ -93,7 +105,7 @@ function ManuscriptPage() {
         <section className="min-w-0" aria-labelledby="image-heading">
           <div className="mb-4 flex items-center justify-between gap-3">
             <h2 id="image-heading" className="text-lg font-semibold">Ձեռագրի պատկեր</h2>
-            {image && <Button variant="ghost" size="icon" aria-label="Հեռացնել պատկերը" title="Հեռացնել պատկերը" disabled={busy || reading} onClick={() => { setImage(null); setName(''); setResult(null); setError(null); }}><Trash2 /></Button>}
+            {image && <Button variant="ghost" size="icon" aria-label="Հեռացնել պատկերը" title="Հեռացնել պատկերը" disabled={busy || reading} onClick={() => { setImage(null); setName(''); setResult(null); setError(null); setReadings({}); }}><Trash2 /></Button>}
           </div>
           <input ref={input} type="file" accept="image/jpeg,image/png,image/webp" className="sr-only" aria-label="Վերբեռնել ձեռագրի պատկեր" disabled={busy || reading} onChange={e => { void selectFile(e.target.files?.[0]); e.target.value = ''; }} />
           <div className="overflow-hidden rounded-md border border-border bg-muted" onDragOver={e => e.preventDefault()} onDrop={e => { e.preventDefault(); void selectFile(e.dataTransfer.files[0]); }}>
@@ -134,6 +146,7 @@ function ManuscriptPage() {
           </div>
         </section>
       </div>
+      <ManuscriptComparison key={image ?? 'empty'} readings={readings} busyModel={busyModel} disabled={!image || busy || reading} runModel={model => void analyze(model)} />
     </div>
   </main>;
 }

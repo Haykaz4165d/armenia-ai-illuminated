@@ -4,6 +4,12 @@
 - [x] Test image validation, output rules, and the real upload flow.
 
 # Modern Armenian and Brainograph
-- [ ] Show modern Armenian immediately while preserving source readings and uncertainty.
-- [ ] Verify the updated output rules and upload flow.
-- [ ] Connect Brainograph's manuscript model once its documented integration and access are available.
+- [x] Show modern Armenian immediately while preserving source readings and uncertainty.
+- [x] Verify updated output rules and image upload; successful inference awaits AI credits.
+- [ ] Connect Brainograph's manuscript model (blocked: documented integration and access unavailable).
+
+# Expert comparison
+- [x] Add two explicit model runs and a local expert source reference.
+- [x] Calculate sample-specific character agreement and CER without invented benchmarks.
+- [x] Verify calculation rules, image upload, model request/error display, and desktop/mobile layout.
+- [ ] Verify successful two-model inference and read back percentages (blocked: AI balance requires replenishment).
