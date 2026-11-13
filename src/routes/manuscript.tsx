@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { useServerFn } from '@tanstack/react-start';
-import { useRef, useState } from 'react';
-import { ArrowLeft, Upload, ScanText, LoaderCircle, Trash2, AlertTriangle } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { ArrowLeft, Upload, ScanText, LoaderCircle, Trash2, AlertTriangle, Maximize, Minimize } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { transcribeManuscript } from '@/lib/manuscript.functions';
 import { validateImageFile, type Transcription } from '@/lib/manuscript';
@@ -34,6 +34,32 @@ function ManuscriptPage() {
   const [busyModel, setBusyModel] = useState<ManuscriptModel | null>(null);
   const requestActive = useRef(false);
   const transcribe = useServerFn(transcribeManuscript);
+  const [fullPage, setFullPage] = useState(false);
+
+  useEffect(() => {
+    const syncFullscreen = () => setFullPage(Boolean(document.fullscreenElement));
+    const onEscape = (event: KeyboardEvent) => { if (event.key === 'Escape') setFullPage(false); };
+    document.addEventListener('fullscreenchange', syncFullscreen);
+    document.addEventListener('keydown', onEscape);
+    return () => {
+      document.removeEventListener('fullscreenchange', syncFullscreen);
+      document.removeEventListener('keydown', onEscape);
+    };
+  }, []);
+
+  async function toggleFullPage() {
+    if (fullPage) {
+      if (document.fullscreenElement) {
+        try { await document.exitFullscreen(); } catch { return; }
+      }
+      setFullPage(false);
+      return;
+    }
+    if (document.documentElement.requestFullscreen) {
+      try { await document.documentElement.requestFullscreen(); setFullPage(true); return; } catch { /* Use an expanded page when browser fullscreen is unavailable. */ }
+    }
+    setFullPage(true);
+  }
 
   async function selectFile(file?: File) {
     if (!file || busy || reading) return;
@@ -83,11 +109,14 @@ function ManuscriptPage() {
     finally { setBusy(false); setBusyModel(null); requestActive.current = false; }
   }
 
-  return <main className="manuscript-workspace min-h-dvh">
+  return <main className={`manuscript-workspace min-h-dvh bg-background text-foreground ${fullPage ? 'fixed inset-0 z-50 overflow-y-auto' : ''}`}>
     <header className="border-b border-border">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-5 py-4">
         <Button asChild variant="ghost"><Link to="/"><ArrowLeft />Սլայդներ</Link></Button>
-        <span className="text-sm text-muted-foreground">Պատմություն × AI</span>
+        <div className="flex items-center gap-3">
+          <span className="hidden text-sm text-muted-foreground sm:inline">Պատմություն × AI</span>
+          <Button variant="outline" size="icon" aria-label={fullPage ? 'Փակել ամբողջ էկրանը' : 'Ամբողջ էկրան'} title={fullPage ? 'Փակել ամբողջ էկրանը' : 'Ամբողջ էկրան'} aria-pressed={fullPage} onClick={() => void toggleFullPage()}>{fullPage ? <Minimize /> : <Maximize />}</Button>
+        </div>
       </div>
     </header>
     <div className="mx-auto max-w-7xl px-5 py-8 md:py-12">
